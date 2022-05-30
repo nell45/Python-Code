@@ -5,7 +5,7 @@ def flip(word):
 	return flippedword
 	
 		
-
+#Following function is to check palindrome
 def checkpalindrome():
 	word = ""
 	print("A palindrome is a word or sequence that reads the same backward and forward.")
