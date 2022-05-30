@@ -3,21 +3,23 @@ from PIL import ImageFilter
 from PIL import ImageOps
 from PIL import ImageDraw
 from PIL import ImageFont
+import pathlib
 import sys
+ROOT_PATH = pathlib.Path(__file__).parent.absolute()
 
 code_path = r"C:\Users\k_nee\OneDrive\Documents\code"
 
 sys.path.append(code_path)
 from imagepixel import image_ops
 
-
+#Class with all the dragon types and methods
 class Dragon():
 	def __init__(self, breed, color, native, rating, image_path):
 		self.breed = breed
 		self.color = color
 		self.native = native
 		self.rating = rating
-		self.image_path = image_path
+		self.image_path = str(ROOT_PATH)+ "\\" + image_path
 		
 	def get_breed(self):
 		return self.breed
@@ -34,19 +36,24 @@ class Dragon():
 	def show_image(self):
 		im = Image.open(self.image_path)
 		im.show()
+	
 	def emboss_image(self):
+		#Opens the same image with an Emboss effect.
 		im = Image.open(self.image_path)
 		img = im.filter(ImageFilter.EMBOSS)
 		img.show()
 	def contour_image(self):
+		#Opens the same image with a Contour effect.
 		im = Image.open(self.image_path)
 		img = im.filter(ImageFilter.CONTOUR)
 		img.show()
 	def blur_image(self):
+		#Opens the same image but blurred slightly.
 		im = Image.open(self.image_path)
 		img = im.filter(ImageFilter.GaussianBlur(4))
 		img.show()
 	def invert_image(self):
+		#Opens the same image with inversed colors. All RGB values are flipped. 
 		im = Image.open(self.image_path)
 		img = ImageOps.invert(im)
 		img.show()
@@ -56,6 +63,7 @@ class Dragon():
 		im = imp.invert_pixels()
 		im.show()
 	def neel_sepia(self):
+		##Opens the same image with a Sepia tone.
 		image = image_ops(self.image_path)
 		im = image.sepia_pixels()
 		im.show()
@@ -64,6 +72,10 @@ class Dragon():
 		img = im.filter(ImageFilter.FIND_EDGES)
 		img.show()
 
+'''
+This dictionary has all the data for each dragon. It lists the breed, color, 
+native region, danger rating, and image path for opening each file.
+'''
 drag_list = [{"breed":"Hungarian Horntail", "color": "black", "native":"Hungary", "rating":5, "image_path":r"image_data\hungarianhorntail.jpg"},
 {"breed":"Chinese Fireball", "color":"red", "native":"China", "rating":4, "image_path":r"image_data\chinesefireball.jpg"},
 {"breed":"Swedish Short Snout", "color":"blue and grey", "native":"Sweden", "rating":3, "image_path":r"image_data\swedishshortsnout.jpg"},
@@ -92,7 +104,7 @@ for drag in drag_obj_list:
 		drag.neel_sepia()
 		drag.neel_invert()
 		drag.find_edges_on_image()
-		drag.find_image_size()
+	#After showing each image, it will print some stats of the selected dragon.
 		print("The breed name of this dragon is the " +str (drag.get_breed()))
 		print("This dragon lives in " +str (drag.get_native()))
 		print("The color of this dragon is " +str (drag.get_color()))
