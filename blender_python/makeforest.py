@@ -34,9 +34,9 @@ def open_file(file_path):
     bpy.ops.wm.open_mainfile(filepath = file_path)
 
 def main():
-    open_file(r"C:\Users\k_nee\OneDrive\Documents\code\forest\forest_template.blend")
+    open_file(r"data\forest_template.blend")
     forest = Forest(30, "forest_floor", "tree")
-    bpy.ops.wm.save_as_mainfile(filepath = r"C:\Users\k_nee\OneDrive\Documents\code\forest\output\test.blend")
+    bpy.ops.wm.save_as_mainfile(filepath = r"data\test.blend")
 
 if __name__ == '__main__':
     main()
