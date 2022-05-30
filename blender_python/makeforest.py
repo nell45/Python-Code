@@ -1,7 +1,9 @@
 
 #C:\Program Files\Blender Foundation\Blender 2.93\blender.exe' -b -P C:\Users\k_nee\OneDrive\Documents\git_repos\Python-Code\blender_python\makeforest.py
 
-
+#This is a blender script to instance trees on a ground plane.
+#Easily Configurable
+#Randomize or Adjust Scale, Rotation, and Location.
 
 import bpy
 import pathlib
